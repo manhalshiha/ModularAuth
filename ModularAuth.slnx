@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="ModularAuth.API/ModularAuth.API.csproj" />
+  <Project Path="ModularAuth.Application/ModularAuth.Application.csproj" />
+  <Project Path="ModularAuth.Domain.Tests/ModularAuth.Domain.Tests.csproj" />
+  <Project Path="ModularAuth.Domain/ModularAuth.Domain.csproj" />
+  <Project Path="ModularAuth.Infrastructure/ModularAuth.Infrastructure.csproj" />
+</Solution>

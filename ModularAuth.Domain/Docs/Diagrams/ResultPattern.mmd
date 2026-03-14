@@ -1,0 +1,17 @@
+﻿%% ModularAuth.Domain/Docs/Diagrams/ResultPattern.mmd
+classDiagram
+class Result {
+    +bool IsSuccess
+    +bool IsFailure
+    +Error? Error
+    +static Success()
+    +static Failure(Error)
+}
+
+class ResultT~T~ {
+    +T Value
+    +static Success(T)
+    +static Failure(Error)
+}
+
+ResultT --> Result

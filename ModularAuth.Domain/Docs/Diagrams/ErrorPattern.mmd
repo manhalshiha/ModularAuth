@@ -1,0 +1,22 @@
+﻿%% ModularAuth.Domain/Docs/Diagrams/ErrorPattern.mmd
+classDiagram
+class Error {
+    +string Code
+    +string Description
+    +ErrorType Type
+    +static Validation()
+    +static NotFound()
+    +static Unauthorized()
+    +static BusinessRule()
+}
+
+class ErrorType {
+    <<enumeration>>
+    Failure
+    Validation
+    NotFound
+    Unauthorized
+    Forbidden
+    Conflict
+    BusinessRule
+}

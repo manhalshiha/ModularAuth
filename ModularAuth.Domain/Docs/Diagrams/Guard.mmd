@@ -1,0 +1,22 @@
+﻿%% ModularAuth.Domain/Docs/Diagrams/GuardPattern.mmd
+classDiagram
+class Guard {
+    +static Result EnsureNotNullOrEmpty(string? value, string code, string desc)
+}
+
+class Result {
+    +bool IsSuccess
+    +bool IsFailure
+    +Error? Error
+    +static Success()
+    +static Failure(Error)
+}
+
+class Error {
+    +string Code
+    +string Description
+    +ErrorType Type
+}
+
+Guard --> Result
+Result --> Error

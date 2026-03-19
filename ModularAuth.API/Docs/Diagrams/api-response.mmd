@@ -1,0 +1,42 @@
+﻿classDiagram
+
+class Result {
+    +bool IsSuccess
+    +bool IsFailure
+    +Error Error
+}
+
+class Result~T~ {
+    +T Value
+}
+
+class Error {
+    +string Code
+    +string Description
+    +ErrorType Type
+}
+
+class ApiResponse~T~ {
+    +bool Success
+    +T Data
+    +ApiError Error
+    +object Metadata
+}
+
+class ApiError {
+    +string Code
+    +string Message
+    +string Type
+}
+
+class ResultToApiResponseMapper {
+    +ToResponse(Result)
+    +ToResponse(Result~T~)
+}
+
+Result --> Error
+Result~T~ --> Result
+
+ResultToApiResponseMapper --> Result
+ResultToApiResponseMapper --> ApiResponse
+ResultToApiResponseMapper --> ApiError

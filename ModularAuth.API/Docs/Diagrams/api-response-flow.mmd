@@ -1,0 +1,9 @@
+﻿flowchart TD
+
+A[Controller] --> B[Result from Domain]
+
+B -->|IsSuccess| C[ApiResponse Success]
+B -->|IsFailure| D[Map Error]
+
+D --> E[ApiError]
+E --> F[ApiResponse Failure]

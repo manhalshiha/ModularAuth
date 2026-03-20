@@ -35,9 +35,10 @@ public class ApiResponse<T>
     public object? Metadata { get; init; }
 
     /// <summary>
-    /// Private constructor to enforce controlled creation via factory methods.
+    /// Public constructor to enforce controlled creation via factory methods.
+    /// Parameterless constructor required for serialization/deserialization.
     /// </summary>
-    private ApiResponse() { }
+    public ApiResponse() { }
 
     /// <summary>
     /// Creates a successful API response.

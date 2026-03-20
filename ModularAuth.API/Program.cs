@@ -1,3 +1,5 @@
+using ModularAuth.Api.Middleware.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,7 +15,7 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-
+app.UseGlobalExceptionHandling();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

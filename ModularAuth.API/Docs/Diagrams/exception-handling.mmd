@@ -1,0 +1,13 @@
+﻿flowchart TD
+
+A[Request] --> B[Global Exception Middleware]
+
+B --> C[Next Middleware / Controller]
+
+C -->|Success| D[Response]
+
+C -->|Exception| E[Catch Exception]
+
+E --> F[Create ApiError]
+F --> G[ApiResponse Failure]
+G --> H[Return 500 JSON]

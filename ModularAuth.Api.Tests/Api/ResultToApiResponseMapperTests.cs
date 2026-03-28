@@ -97,4 +97,40 @@ public class ResultToApiResponseMapperTests
 
         Assert.Null(response.Data);
     }
+    /// <summary>
+    /// Verifies that when a non-generic successful <see cref="Result"/> is mapped,
+    /// the resulting <see cref="ApiResponse{T}"/> includes metadata.
+    /// 
+    /// This ensures that all API responses—regardless of having a data payload—
+    /// are enriched with infrastructure-level information such as correlation identifiers
+    /// and timestamps for observability and tracing.
+    /// </summary>
+    [Fact]
+    public void ToResponse_ShouldIncludeMetadata_WhenCalled()
+    {
+        var result = Result.Success();
+
+        var response = ResultToApiResponseMapper.ToResponse(result);
+
+        Assert.NotNull(response.Metadata);
+        Assert.NotNull(response.Metadata!.CorrelationId);
+        Assert.NotNull(response.Metadata.Timestamp);
+    }
+    /// <summary>
+    /// Verifies that when a generic successful <see cref="Result{T}"/> is mapped,
+    /// the resulting <see cref="ApiResponse{T}"/> includes metadata.
+    /// 
+    /// This ensures that responses containing data are also consistently enriched
+    /// with metadata, maintaining a uniform API contract across all response types.
+    /// </summary>
+    [Fact]
+    public void ToResponse_Generic_ShouldIncludeMetadata_WhenCalled()
+    {
+        var result = Result<string>.Success("value");
+
+        var response = ResultToApiResponseMapper.ToResponse(result);
+
+        Assert.NotNull(response.Metadata);
+        Assert.NotNull(response.Metadata!.CorrelationId);
+    }
 }

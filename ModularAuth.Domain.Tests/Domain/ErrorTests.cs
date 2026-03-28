@@ -1,7 +1,7 @@
 ﻿using Xunit;
 using ModularAuth.Domain.Errors;
 
-namespace Platform.Tests.Domain
+namespace ModularAuth.Domain.Tests.Domain
 {
     public class ErrorTests
     {

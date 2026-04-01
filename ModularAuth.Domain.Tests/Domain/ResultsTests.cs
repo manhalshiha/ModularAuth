@@ -3,7 +3,7 @@ using FluentAssertions;
 using ModularAuth.Domain.Results;
 using ModularAuth.Domain.Errors;
 
-namespace Platform.Tests.Domain
+namespace ModularAuth.Domain.Tests.Domain
 {
     public class ResultsTests
     {

@@ -2,7 +2,7 @@
 using ModularAuth.Domain.Guards;
 using ModularAuth.Domain.Results;
 
-namespace Platform.Tests.Domain
+namespace ModularAuth.Domain.Tests.Domain
 {
     public class GuardTests
     {

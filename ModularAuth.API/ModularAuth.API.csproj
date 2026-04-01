@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ModularAuth.Application\ModularAuth.Application.csproj" />
     <ProjectReference Include="..\ModularAuth.Domain\ModularAuth.Domain.csproj" />
   </ItemGroup>
 

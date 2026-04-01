@@ -28,11 +28,12 @@ public class ApiResponse<T>
     public ApiError? Error { get; init; }
 
     /// <summary>
-    /// Optional metadata that can include additional contextual information.
-    /// This is intentionally flexible to support different scenarios
-    /// such as pagination, tracing, or caching without enforcing a rigid schema.
+    /// Optional metadata providing additional context for the response.
+    /// 
+    /// This may include correlation identifiers, timestamps,
+    /// pagination details, or other infrastructure-level information.
     /// </summary>
-    public object? Metadata { get; init; }
+    public ApiMeta? Metadata { get; init; }
 
     /// <summary>
     /// Public constructor to enforce controlled creation via factory methods.
@@ -40,42 +41,45 @@ public class ApiResponse<T>
     /// </summary>
     public ApiResponse() { }
 
-    /// <summary>
-    /// Creates a successful API response.
     /// </summary>
     /// <param name="data">
-    /// The payload to return to the client.
+    /// The payload returned to the client.
     /// </param>
     /// <param name="metadata">
-    /// Optional metadata associated with the response (e.g. pagination info).
+    /// Optional metadata associated with the response,
+    /// such as correlation identifiers or pagination details.
     /// </param>
     /// <returns>
     /// A successful <see cref="ApiResponse{T}"/> instance.
     /// </returns>
-    public static ApiResponse<T> SuccessResponse(T data, object? metadata = null)
-        => new()
-        {
-            Success = true,
-            Data = data,
-            Metadata = metadata,
-            Error = null
-        };
+    public static ApiResponse<T> SuccessResponse(T data, ApiMeta? metadata = null)
+    => new()
+    {
+        Success = true,
+        Data = data,
+        Metadata = metadata,
+        Error = null
+    };
 
     /// <summary>
     /// Creates a failed API response.
     /// </summary>
     /// <param name="error">
-    /// The error details describing why the request failed.
+    /// The error describing why the request failed.
+    /// </param>
+    /// <param name="metadata">
+    /// Optional metadata associated with the failure,
+    /// useful for tracing and diagnostics.
     /// </param>
     /// <returns>
     /// A failed <see cref="ApiResponse{T}"/> instance.
     /// </returns>
-    public static ApiResponse<T> FailureResponse(ApiError error)
-        => new()
-        {
-            Success = false,
-            Error = error,
-            Data = default,
-            Metadata = null
-        };
+    public static ApiResponse<T> FailureResponse(ApiError error, ApiMeta? metadata = null)
+     => new()
+     {
+         Success = false,
+         Error = error,
+         Data = default,
+         Metadata = metadata
+     };
 }
